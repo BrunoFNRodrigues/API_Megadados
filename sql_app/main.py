@@ -55,7 +55,7 @@ class ProductQuantity(BaseModel):
 fake_db = {}
 
 app = FastAPI()
-
+########  NOMES DOS MODELOS MUDARAM, MUDAR AQUI TBM
 @app.post("/products/", response_model=Product, summary="Create a product", tags=["Create"])
 async def create_product(product: Product= Body(
                         example={
