@@ -5,12 +5,13 @@ from dotenv import load_dotenv
 import os
 load_dotenv()                   
 
-USER = os.getenv("USER")
-PASSWORD = os.getenv("PASSWORD")
-DB = os.getenv("DB")
+USER = os.environ.get("USER")
+PASSWORD = os.environ.get("PASSWORD")
+DB = os.environ.get("DB")
 
-SQLALCHEMY_DATABASE_URL = "mysql://{USER}:{PASSWORD}@localhost:3306/{DB}"
+SQLALCHEMY_DATABASE_URL = "mysql+pymysql://{user}:{password}@localhost:3306/{db}".format(user = USER, password = PASSWORD, db = DB)
 # SQLALCHEMY_DATABASE_URL = "postgresql://user:password@postgresserver/db"
+
 
 engine = create_engine( SQLALCHEMY_DATABASE_URL )
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

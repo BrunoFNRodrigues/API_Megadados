@@ -12,6 +12,7 @@ class ProductCreate(BaseModel):
     quantity: int = Field(ge=0, description="Quantity in stock. Must be greater than or equal to zero.")
 
     class Config:
+        orm_mode = True
         schema_extra = {
             "example": {
                 "name": "Leite",
@@ -53,10 +54,10 @@ class ProductPatch(BaseModel):
         }
 
 class ProductQuantity(BaseModel):
-    quantity: int = Field(ge=0, description="Quantity in stock. Must be greater than or equal to zero.")
+    quantity: int = Field(description="Quantity in stock. Must be greater than or equal to zero.")
     class Config:
         schema_extra = {
             "example": {
-                "quantity": 23.00
+                "quantity": -23
             }
         }
